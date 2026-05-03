@@ -1,43 +1,45 @@
-public class RegulaFalsi {
-
-    static double f(double x) {
-        return x * x * x - x - 2; // f(x) = x^3 - x - 2
+class Main {
+    public static double equate(double x) {
+        return x * Math.log10(x) - 1.2;
     }
-
-    static void regulaFalsi(double a, double b, double tol) {
-        if (f(a) * f(b) >= 0) {
-            System.out.println("Invalid interval: f(a) and f(b) must have opposite signs.");
-            return;
-        }
-
-        double c = a;
-        int iter = 0;
-
-        System.out.printf("%-10s %-15s %-15s %-15s %-15s%n",
-                "Iter", "a", "b", "c", "f(c)");
-        System.out.println("-".repeat(70));
-
-        while (Math.abs(f(c)) > tol) {
-            c = (a * f(b) - b * f(a)) / (f(b) - f(a));
-            iter++;
-            System.out.printf("%-10d %-15.6f %-15.6f %-15.6f %-15.6f%n",
-                    iter, a, b, c, f(c));
-
-            if (f(c) == 0.0) break;
-            else if (f(c) * f(a) < 0) b = c;
-            else a = c;
-
-            if (iter >= 100) break;
-        }
-
-        System.out.println("\nRoot = " + c);
+    
+    public static double approx(double x0, double x1) {
+        return x0 - ((x1 - x0) / (equate(x1) - equate(x0))) * equate(x0);
     }
-
+    
     public static void main(String[] args) {
-        double a = 1, b = 2, tol = 0.0001;
-        System.out.println("Regula Falsi Method for f(x) = x^3 - x - 2");
-        System.out.println("Interval: [" + a + ", " + b + "], Tolerance: " + tol);
-        System.out.println();
-        regulaFalsi(a, b, tol);
+        int i = 1;
+        double positive = 0;
+        double negative = 0;
+        
+        while (true) {
+            if (equate(i) < 0) {
+                negative = i;
+            }
+            else {
+                positive = i;
+                break;
+            }
+            i++;
+        }
+        
+        double curr = 0;
+        
+        for (i = 0; i < 4; i++) {
+            curr = approx(negative, positive);
+            double root = equate(curr);
+            
+            if (root < 0) {
+                negative = curr;
+            }
+            else if (root == 0) {
+                break;
+            }
+            else {
+                positive = curr;
+            }
+        }
+        
+        System.out.println(curr);
     }
 }
