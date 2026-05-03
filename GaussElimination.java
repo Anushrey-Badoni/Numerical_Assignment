@@ -1,4 +1,4 @@
-public class Gauss {
+public class GaussElimination {
     public static void main(String[] args) {
         
         double[][] a = {
