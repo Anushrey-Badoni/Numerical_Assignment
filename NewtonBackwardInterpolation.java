@@ -1,4 +1,4 @@
-public class Backward {
+public class NewtonBackwardInterpolation {
     public static void main(String[] args) {
         double[] x = {1891, 1901, 1911, 1921, 1931};
         double[] y = {46, 66, 81, 93, 101};
