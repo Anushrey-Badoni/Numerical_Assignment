@@ -1,6 +1,6 @@
 public class Gauss {
     public static void main(String[] args) {
-        // Augmented matrix: 3 rows, 4 columns (last column is the constant)
+        
         double[][] a = {
             { 2,  1, -1,  8 },
             {-3, -1,  2, -11},
