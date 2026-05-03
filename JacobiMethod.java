@@ -1,4 +1,4 @@
-public class Jacobi {
+public class JacobiMethod {
     public static void main(String[] args) {
         double[][] a = {
             {10, 2, 1},
