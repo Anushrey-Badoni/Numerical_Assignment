@@ -1,43 +1,21 @@
 class Main {
-    public static double equate(double x) {
-        return (x * x * x) - x - 11;
-    }
-    
+    static double f(double x) { return x*x*x - x - 11; }
+
     public static void main(String[] args) {
-        int i = 0;
-        double positive = 0;
-        double negative = 0;
+        double a = 0, b = 0;
         
-        while (true) {
-            
-            if (equate(i) < 0) {
-                negative = i;
-            }
-            else {
-                positive = i;
-                break;
-            }
-            
-            i++;
+        while (f(b) < 0) { 
+            a = b; 
+            b++; 
         }
-        
-        double curr = 0;
-        
-        for (i = 0; i < 10; i++) {
-            curr = (negative + positive) / 2;
-            double root = equate(curr);
-            
-            if (root < 0) {
-                negative = curr;
-            }
-            else if (root == 0) {
-                break;
-            }
-            else {
-                positive = curr;
-            }
+
+        double mid = 0;
+        for (int i = 0; i < 20; i++) {
+            mid = (a + b) / 2;
+            if (f(mid) < 0) a = mid;
+            else b = mid;
         }
-        
-        System.out.println(curr);
+
+        System.out.println(mid);
     }
 }
