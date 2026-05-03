@@ -1,28 +1,16 @@
-class Main {
-    public static double equate(double x) {
-        return (x * x * x * x) - x - 10;
-    }
-    
-    public static double derivative(double x){
-        return 4 * (x * x * x) - 1;
-    }
-    
-    public static double newtonRaphson(double x){
-        return x - (equate(x)/derivative(x));
-    }
-    
+public class NewtonRaphson {
+    static double f(double x) { return x*x*x*x - x - 10; }
+    static double df(double x) { return 4*x*x*x - 1; }
+
     public static void main(String[] args) {
-        double i = 0;
-        double x = -1;
-        while (x < 0){
-            x = equate(i);
-            i++;
-        }
+        double x = 0;
         
-        for (i = 0; i < 4; i++) {
-            x = newtonRaphson(x);
+        while (f(x) < 0) x++;
+
+        for (int i = 0; i < 5; i++) {
+            x = x - f(x) / df(x);
         }
-        
+
         System.out.println(x);
     }
 }
