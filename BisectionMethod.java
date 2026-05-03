@@ -1,5 +1,5 @@
-class Main {
-    static double f(double x) { return x*x*x - x - 11; }
+public class BisectionMethod {
+    public static double f(double x) { return x*x*x - x - 11; }
 
     public static void main(String[] args) {
         double a = 0, b = 0;
